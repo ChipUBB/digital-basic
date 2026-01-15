@@ -1,0 +1,17 @@
+{
+	"name": "librelane-base-image",
+    "image": "ghcr.io/chipubb/librelane-base-image:latest",
+
+    "containerEnv": {
+        "PDK": "ihp-sg13g2",
+        "PDK_ROOT": "/workspaces/digital-basic/IHP-Open-PDK"
+    },
+
+    "runArgs": [
+    "--env=DISPLAY=${localEnv:DISPLAY}",
+    "--env=QT_X11_NO_MITSHM=1",
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw"
+    ],
+
+    "postCreateCommand": "git submodule update --init --recursive"
+}
