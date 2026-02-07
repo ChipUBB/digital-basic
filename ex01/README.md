@@ -34,15 +34,21 @@ Circuito en compuertas lógicas (esquemático):
 ---
 > ### Task 1
 > 
-> Crea y simula el circuito en **Digital**. Asegurate de que estás en `workspace/digital-basic/ex01` (puedes checkear con `pwd`) y abre el archivo `fulladder_1b.dig` con **Digital**:
+> Crea y simula el circuito en **Digital**. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex01` (puedes checkear con `pwd`) y abre el archivo `fulladder_1b.dig` con **Digital**:
 >
 >  ```
 >  $ Digital fullader_1b.dig
 >  ```
 >
-> Completa el esquemático utilizando compuertas lógicas, estas se encuentran en `Components/logic` en el menú superior de **Digital**.
+> El archivo contiene las entradas, salidas, así como un **test** para verificar el funcionamiento. Completa el esquemático utilizando compuertas lógicas, estas se encuentran en `Components/logic` en el menú superior de **Digital**.
 >
->Ejecuta el **test** para verificar el funcionamiento del circuito haciendo click en el botón the **Run (play)** con el tick verde.
+> ![fullader_1b](../figs/fulladder_1b.png)
+>
+> Ejecuta el **test** para verificar el funcionamiento del circuito haciendo click en el botón the **Run (play)** con el tick verde.
+>
+> Si el circuito fué implementado correctamente, la ventana emergente mostrará los valores de las salidas en verde. En caso contrario, algunos valores estarán en rojo.
+>
+> ![ex01_test](../figs/ex01_test.png)
 
 >
 > [!CAUTION] 
