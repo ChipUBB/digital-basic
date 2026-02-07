@@ -31,23 +31,24 @@ Circuito en compuertas lógicas (esquemático):
 
 ![fulladder_gates](../figs/fulladder_gates.png)
 
-<div style="border: 2px solid #1F77B4; border-radius: 5px; padding: 15px; margin: 20px 0; background-color: #f9f9f9;">
-  <div style="background-color: #1F77B4; color: white; padding: 10px; margin: -15px -15px 15px -15px; border-radius: 3px 3px 0 0; font-weight: bold;">
-    Task 1
-  </div>
-  <p>Crea y simula el circuito en <strong>Digital</strong>. Asegurate de que estás en <code>workspace/digital-basic/ex01</code> (puedes checkear con <code>pwd</code>) y abre el archivo <code>fulladder_1b.dig</code> con <strong>Digital</strong>: </p>
-  
-  ```
-  $ Digital fullader_1b.dig
-  ```
+---
+> ### Task 1
+> 
+> Crea y simula el circuito en **Digital**. Asegurate de que estás en `workspace/digital-basic/ex01` (puedes checkear con `pwd`) y abre el archivo `fulladder_1b.dig` con **Digital**:
+>
+>  ```
+>  $ Digital fullader_1b.dig
+>  ```
+>
+> Completa el esquemático utilizando compuertas lógicas, estas se encuentran en `Components/logic` en el menú superior de **Digital**.
+>
+>Ejecuta el **test** para verificar el funcionamiento del circuito haciendo click en el botón the **Run (play)** con el tick verde.
 
-  <p> Completa el esquemático utilizando compuertas lógicas, estas se encuentran en <code>Components/logic</code> en el menú superior de <strong>Digital</strong>.
-
-  <p> Ejecuta el <strong>test</strong> para verificar el funcionamiento del circuito haciendo click en el botón the <strong>Run (play)</strong> con el tick verde.
-</div>
-
+>
 > [!CAUTION] 
 > Las entradas y salidas del esquemático deben tener los mismos nombres que las definidas en el **test**. Se recomienda no modificar los nombres o bien hacerlo en ambas partes para evitar errores por diferencias de nombre.
+
+---
 
 ## Appendix (LLM generated): Boolean Algebra Axioms and Theorems
 
