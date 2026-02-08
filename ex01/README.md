@@ -1,14 +1,14 @@
 # ex01
 
-En este ejercicio, trabajarás en el diseño y simulación de un **full adder** (sumador) de 1 bit para familiarizarte con el software de diseño lógico y simulación **Digital**. Las tareas son:
+En este ejercicio, trabajarás en el diseño y simulación de un **Full Adder** (sumador) para familiarizarte con el software de diseño lógico y simulación **Digital**. Las tareas son:
 
 - Obtener la función booleana desde la tabla de verdad que describe el funcionamiento del circuito
-- A partir de la función booleana, crear el esquemático en compuertas lógicas en el archivo `fulladder_1b.dig` con **Digital**
+- A partir de la función booleana, crear el esquemático en compuertas lógicas en el archivo `fulladder.dig` con **Digital**
 - Verificar el funcionamiento del circuito a través del **test** en el archivo
 
-## Full Adder (1-bit)
+## Full Adder
 
-Un **full adder** tiene 3 entradas, $A$, $B$ y $C_{in}$, y 2 salidas $S$ y $C_{out}$.
+Un **Full Adder** tiene 3 entradas, $A$, $B$ y $C_{in}$, y, 2 salidas, $S$ y $C_{out}$.
 
 ![fulladder](../figs/fulladder.png)
 
@@ -34,15 +34,15 @@ Circuito en compuertas lógicas (esquemático):
 ---
 > ### Task 1
 > 
-> Crea y simula el circuito en **Digital**. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex01` (puedes checkear con `pwd`) y abre el archivo `fulladder_1b.dig` con **Digital**:
+> Crea y simula el circuito en **Digital**. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex01` (puedes checkear con `pwd`) y abre el archivo `fulladder.dig` con **Digital**:
 >
 >  ```
->  $ Digital fullader_1b.dig
+>  $ Digital fullader.dig
 >  ```
 >
 > El archivo contiene las entradas, salidas, así como un **test** para verificar el funcionamiento. Completa el esquemático utilizando compuertas lógicas, estas se encuentran en `Components/logic` en el menú superior de **Digital**.
 >
-> ![fullader_1b](../figs/fulladder_1b.png)
+> ![fullader_digital](../figs/fulladder_digital.png)
 >
 > Ejecuta el **test** para verificar el funcionamiento del circuito haciendo click en el botón the **Run (play)** con el tick verde.
 >
