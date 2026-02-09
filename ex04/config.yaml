@@ -1,0 +1,8 @@
+DESIGN_NAME: <top module name>
+VERILOG_FILES: dir::<path to source>
+CLOCK_PERIOD: 25
+CLOCK_PORT: clk
+
+FP_SIZING: absolute
+DIE_AREA:  [0.00, 0.00, 50.00, 50.00]
+CORE_AREA: [2, 2, 48, 48]
