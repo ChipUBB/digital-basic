@@ -23,7 +23,7 @@ Una desventaja de este circuito es que es lento si $N$ es grande, como cada etap
 > 
 > Crea y simula en **Digital**, un **Ripple-Carry Adder** de 4 bits utilizando el **Full Adder** creado en `ex01`. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex02` (puedes checkear con `pwd`) y abre el archivo `adder_4b.dig` con **Digital**:
 >
->  ```
+>  ```bash
 >  $ Digital adder_4b.dig
 >  ```
 >
@@ -36,7 +36,7 @@ Una desventaja de este circuito es que es lento si $N$ es grande, como cada etap
 > [!IMPORTANT] 
 > Para poder instanciar un módulo desde un archivo `.dig`, el archivo debe estar en el mismo directorio de trabajo. Se recomienda crear una copia usando el explorador de archivos de `VSCode` o bien desde una terminal con el comando:
 >
-> ```
+> ```bash
 > $ cp ../ex01/fulladder.dig ./
 > ```
 >

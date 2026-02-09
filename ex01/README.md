@@ -36,7 +36,7 @@ Circuito en compuertas lógicas (esquemático):
 > 
 > Crea y simula el circuito en **Digital**. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex01` (puedes checkear con `pwd`) y abre el archivo `fulladder.dig` con **Digital**:
 >
->  ```
+>  ```bash
 >  $ Digital fullader.dig
 >  ```
 >
