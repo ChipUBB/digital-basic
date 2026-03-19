@@ -64,7 +64,7 @@ La instalación de Docker varía según tu sistema operativo:
 
 **Para Windows:**
 
-1. Ve a [Docker Desktop](https://www.docker.com/products/docker-desktop/) y descarga Docker Desktop para Windows.
+1. Ve a [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) y descarga Docker Desktop para Windows.
 2. Instala Docker Desktop siguiendo el asistente de instalación.
 3. Una vez instalado, abre Docker Desktop y espera a que inicie completamente (verás un ícono de Docker en tu barra de tareas).
 4. Verifica la instalación abriendo PowerShell y ejecutando:
@@ -153,6 +153,13 @@ $ echo $PDK
 ```
 
 Si ves Digital y la variable `PDK` configurada, ¡estás listo para comenzar el taller!
+
+Corre el smoke test para asegurar que todo está bien con Librelane
+```bash
+$ librelane --log-level ERROR --condensed --show-progress-bar --smoke-test
+```
+
+Puede que obtengas unos warnings, no te preocupes, si el flujo llega a la etapa 79 y hay algunas casillas en verde, todo está bien (LVS passed, DRC passed, Antenna passed).
 
 ### Solución de problemas comunes
 
