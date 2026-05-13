@@ -1,0 +1,10 @@
+DESIGN_NAME: logic_game
+
+VERILOG_FILES: dir::src/logic_game.v
+
+# Diseño combinacional: no se declara CLOCK_PORT.
+# Si la versión del flujo usada en el entorno exige reloj, usar una variante wrapper secuencial.
+
+FP_SIZING: absolute
+DIE_AREA: [0.00, 0.00, 50.00, 50.00]
+CORE_AREA: [2, 2, 48, 48]

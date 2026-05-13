@@ -31,6 +31,7 @@ digital-basic/
 ├── ex02/                   # Ejercicio 2: Diseño de circuitos combinacionales
 ├── ex03/                   # Ejercicio 3: Diseño de circuitos secuenciales
 ├── ex04/                   # Ejercicio 4: Flujo RTL-to-GDS con LibreLane
+├── ex05_logic_game/        # Ejercicio 5: Mini juego de tabla de verdad a layout físico
 ├── digital-basics.pdf      # Slides del taller
 ├── INSTALL.md              # Guía de instalación completa
 └── README.md               # Este archivo
