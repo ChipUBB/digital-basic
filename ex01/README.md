@@ -27,7 +27,7 @@ $C_{out}$:
 
 |Truth Table|Boolean Equation|
 |:---|:---|
-|![fulladder_Cout](../figs/fulladder_Cout.png)|$C_{out} = \overline{A}BC_{in} + A\overline{B}C_{in} + AB\overline{C_{in}} + ABC_{in}$<br>Using Idempotency (T3): $B + B = B$, we get: <br> $C_{out} = \overline{A}BC_{in} + A\overline{B}C_{in} + AB\overline{C_{in}} + ABC_{in} + ABC_{in} + ABC_{in}$ <br> $C_{out} = BC_{in}(\overline{A} + A) + AC_{in}(\overline{B} + B) + AB(\overline{C_{in}} + C_{in})$ <br> $C_{out} = BC_{in} + AC_{in} + AB$
+|![fulladder_Cout](../figs/fulladder_Cout.png)|$C_{out} = \overline{A}BC_{in} + A\overline{B}C_{in} + AB\overline{C_{in}} + ABC_{in}$ <br> Using Idempotency (T3): $B + B = B$, we get: <br> $C_{out} = \overline{A}BC_{in} + A\overline{B}C_{in} + AB\overline{C_{in}} + ABC_{in} + ABC_{in} + ABC_{in}$ <br> $C_{out} = BC_{in}(\overline{A} + A) + AC_{in}(\overline{B} + B) + AB(\overline{C_{in}} + C_{in})$ <br> $C_{out} = BC_{in} + AC_{in} + AB$
 
 Logic gate circuit (schematic):
 
