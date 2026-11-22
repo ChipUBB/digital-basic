@@ -4,6 +4,9 @@
 
 Bienvenido al taller de Diseño Digital Básico. Este repositorio contiene todos los materiales, ejercicios y herramientas necesarias para aprender los fundamentos del diseño de circuitos integrados digitales, desde la creación de circuitos lógicos básicos hasta la implementación física de un chip.
 
+> [!NOTE]
+> Este repositorio está disponible tanto en [Codeberg](https://codeberg.org/ChipUBB/digital-basic) como en [GitHub](https://github.com/ChipUBB/digital-basic), con exactamente el mismo contenido. Usa el que prefieras.
+
 ## Objetivos del Taller
 
 Al completar este taller, serás capaz de:

@@ -4,9 +4,9 @@
 
 Las herramientas para diseño de circuitos integrados, en general, son creadas originalmente para sistemas operativos basados en UNIX (como Linux), por lo tanto, el entorno de trabajo para este taller utiliza la distribución de Linux Ubuntu 22.04. Si es tu primera vez usando Linux, ¡no te preocupes! Solo haremos algunas cosas básicas como copiar archivos usando `cp` o movernos hacia rutas específicas con `cd`. Además, puedes consultar el [Linux Cheatsheet](./digital_basics.pdf) al final de las slides del taller para revisar comandos básicos.
 
-## Git/GitHub
+## Git, Codeberg y GitHub
 
-Como puedes ver, actualmente te encuentras en un repositorio de GitHub, pero ¿qué son exactamente Git y GitHub?
+Como puedes ver, actualmente te encuentras en un repositorio de Git alojado en Codeberg y GitHub, pero ¿qué son exactamente Git, Codeberg y GitHub?
 
 ### ¿Qué es Git?
 
@@ -14,13 +14,13 @@ Como puedes ver, actualmente te encuentras en un repositorio de GitHub, pero ¿q
 
 Con Git, puedes tomar una "fotografía" de tu código antes de hacer las modificaciones, de tal modo que siempre puedes volver a ese punto. En Git, esa fotografía se llama **commit**. Es como tener un botón de "deshacer" súper poderoso que te permite volver a cualquier punto anterior de tu proyecto.
 
-### ¿Qué es GitHub?
+### ¿Qué son Codeberg y GitHub?
 
-**GitHub** es una plataforma en la nube que funciona como un "hogar" para tus proyectos que usan Git. Piensa en GitHub como un Google Drive especializado para proyectos de código. La ventaja es que múltiples personas pueden trabajar en el mismo proyecto sin pisarse los pies: cada uno hace sus cambios por separado y luego Git ayuda a combinar todo, resolviendo conflictos cuando dos personas modifican la misma línea de código de formas diferentes.
+**Codeberg** y **GitHub** son plataformas en la nube que funcionan como un "hogar" para tus proyectos que usan Git. Piensa en ellas como un Google Drive especializado para proyectos de código. Ambas funcionan de manera muy similar: **GitHub** es la más utilizada, mientras que **Codeberg** es administrada por una organización sin fines de lucro impulsada por su comunidad y está construida completamente con software libre y de código abierto. Este taller está publicado en ambas, con exactamente el mismo contenido, así que puedes usar la que prefieras. La ventaja es que múltiples personas pueden trabajar en el mismo proyecto sin pisarse los pies: cada uno hace sus cambios por separado y luego Git ayuda a combinar todo, resolviendo conflictos cuando dos personas modifican la misma línea de código de formas diferentes.
 
 ### Instalación de Git
 
-Actualmente, te encuentras en un repositorio de GitHub donde están almacenados todos los archivos necesarios para realizar el taller. Para poder trabajar con estos archivos en tu computadora, necesitas **clonar** el repositorio (hacer una copia local). Pero primero, debes instalar Git.
+Actualmente, te encuentras en un repositorio (en Codeberg o GitHub) donde están almacenados todos los archivos necesarios para realizar el taller. Para poder trabajar con estos archivos en tu computadora, necesitas **clonar** el repositorio (hacer una copia local). Pero primero, debes instalar Git.
 
 1. **Instalar Git**: Ve a [Git Install](https://git-scm.com/install/windows) y sigue las instrucciones según tu sistema operativo (Windows, macOS, o Linux).
 
@@ -30,8 +30,12 @@ $ git --version
 ```
 Deberías ver algo como `git version 2.x.x`, lo que confirma que Git está instalado correctamente.
 
-3. **Clonar el repositorio**: Una vez Git esté instalado, clona el repositorio con el comando:
+3. **Clonar el repositorio**: Una vez Git esté instalado, clona el repositorio desde **uno** de los dos sitios (ambos tienen el mismo contenido):
 ```bash
+# Desde Codeberg
+$ git clone https://codeberg.org/ChipUBB/digital-basic.git
+
+# O desde GitHub
 $ git clone https://github.com/ChipUBB/digital-basic.git
 ```
 

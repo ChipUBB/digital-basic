@@ -4,9 +4,9 @@
 
 Integrated circuit design tools are, in general, originally built for UNIX-based operating systems (such as Linux). For this reason, the working environment for this workshop uses the Ubuntu 22.04 Linux distribution. If this is your first time using Linux, don't worry! We will only do a few basic things, like copying files with `cp` or moving to specific paths with `cd`. You can also check the [Linux Cheatsheet](./digital_basics.pdf) at the end of the workshop slides to review basic commands.
 
-## Git/GitHub
+## Git, Codeberg and GitHub
 
-As you can see, you are currently in a GitHub repository, but what exactly are Git and GitHub?
+As you can see, you are currently in a Git repository hosted on Codeberg and GitHub, but what exactly are Git, Codeberg and GitHub?
 
 ### What is Git?
 
@@ -14,13 +14,13 @@ As you can see, you are currently in a GitHub repository, but what exactly are G
 
 With Git, you can take a "snapshot" of your code before making changes, so you can always return to that point. In Git, that snapshot is called a **commit**. It's like having a super-powered "undo" button that lets you go back to any earlier point in your project.
 
-### What is GitHub?
+### What are Codeberg and GitHub?
 
-**GitHub** is a cloud platform that works as a "home" for your projects that use Git. Think of GitHub as a Google Drive specialized for code projects. The advantage is that many people can work on the same project without stepping on each other's toes: everyone makes their changes separately and then Git helps combine everything, resolving conflicts when two people change the same line of code in different ways.
+**Codeberg** and **GitHub** are cloud platforms that work as a "home" for your projects that use Git. Think of them as a Google Drive specialized for code projects. Both work in much the same way: **GitHub** is the most widely used one, while **Codeberg** is run by a non-profit, community-driven organization and is built entirely on free and open-source software. This workshop is published on both, with exactly the same content, so you can use whichever you prefer. The advantage is that many people can work on the same project without stepping on each other's toes: everyone makes their changes separately and then Git helps combine everything, resolving conflicts when two people change the same line of code in different ways.
 
 ### Installing Git
 
-You are currently in a GitHub repository where all the files needed for the workshop are stored. To work with these files on your computer, you need to **clone** the repository (make a local copy). But first, you need to install Git.
+You are currently in a repository (on Codeberg or GitHub) where all the files needed for the workshop are stored. To work with these files on your computer, you need to **clone** the repository (make a local copy). But first, you need to install Git.
 
 1. **Install Git**: Go to [Git Install](https://git-scm.com/install/windows) and follow the instructions for your operating system (Windows, macOS, or Linux).
 
@@ -30,8 +30,12 @@ $ git --version
 ```
 You should see something like `git version 2.x.x`, which confirms that Git is installed correctly.
 
-3. **Clone the repository**: Once Git is installed, clone the repository with the command:
+3. **Clone the repository**: Once Git is installed, clone the repository from **one** of the two sites (both have the same content):
 ```bash
+# From Codeberg
+$ git clone https://codeberg.org/ChipUBB/digital-basic.git
+
+# Or from GitHub
 $ git clone https://github.com/ChipUBB/digital-basic.git
 ```
 

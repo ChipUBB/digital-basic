@@ -4,6 +4,9 @@
 
 Welcome to the Basic Digital Design workshop. This repository contains all the materials, exercises and tools you need to learn the fundamentals of digital integrated circuit design, from building basic logic circuits to the physical implementation of a chip.
 
+> [!NOTE]
+> This repository is available on both [Codeberg](https://codeberg.org/ChipUBB/digital-basic) and [GitHub](https://github.com/ChipUBB/digital-basic), with exactly the same content. Use whichever you prefer.
+
 ## Workshop Goals
 
 By completing this workshop, you will be able to:
