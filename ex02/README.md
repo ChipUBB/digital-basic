@@ -1,54 +1,56 @@
+🌐 **English** | [Español](README.es.md)
+
 # ex02
 
-En este ejercicio, trabajarás en el diseño y simulación de un **Adder** (sumador) de 4 bits, aprovechando la capacidad de diseño jerárquico de **Digital**. Las tareas son:
+In this exercise, you will design and simulate a 4-bit **Adder**, taking advantage of **Digital**'s hierarchical design capabilities. The tasks are:
 
-- Entender como realizar un diseño jerárquico en **Digital**
-- Utilizar el **Full Adder** de `ex01` e instanciarlo en `adder_4b.dig` para construir un **Adder** de 4 bits
-- Verificar el funcionamiento del circuito a través del **test** en el archivo
+- Understand how to build a hierarchical design in **Digital**
+- Use the **Full Adder** from `ex01` and instantiate it in `adder_4b.dig` to build a 4-bit **Adder**
+- Verify the circuit's behavior with the **test** included in the file
 
 ## Ripple-Carry Adder
 
-Una forma sencilla de construir un **Adder** de $N$ bits es conectar en cadena $N$ **Full Adder**. Donde, la salida $C_{out}$ de una etapa actúa como entrada $C_{in}$ de la siguiente etapa (también conocido como **carry propagate adder (CPA)** ya que el $C_{out}$ se propaga hacia el siguiente $C_{in}$). 
+A simple way to build an $N$-bit **Adder** is to chain $N$ **Full Adders** together, where the $C_{out}$ output of one stage acts as the $C_{in}$ input of the next stage (also known as a **carry propagate adder (CPA)**, since $C_{out}$ propagates into the next $C_{in}$).
 
 ![RippleCarryAdder](../figs/RippleCarryAdder.png)
 
-El símbolo de un **CPA** es similiar al de un **Full Adder** pero se indica que las entradas $A$, $B$, y la salida $S$, son buses de $N$ bits.
+The symbol for a **CPA** is similar to that of a **Full Adder**, but it indicates that the inputs $A$, $B$, and the output $S$ are $N$-bit buses.
 
 ![NAdder](../figs/NAdder.png)
 
-Una desventaja de este circuito es que es lento si $N$ es grande, como cada etapa debe esperar que la etapa anterior haya finalizado el cómputo de $C_{out}$. Entre implementaciones que logran mayor velocidad en comparación al **Ripple-Carry Adder** se encuentran **Carry-Lookahead Adder** y **Prefix Adder**. 
+One drawback of this circuit is that it is slow when $N$ is large, since each stage must wait for the previous stage to finish computing $C_{out}$. Faster alternatives to the **Ripple-Carry Adder** include the **Carry-Lookahead Adder** and the **Prefix Adder**.
 
 ---
 > ### Task 1
 > 
-> Crea y simula en **Digital**, un **Ripple-Carry Adder** de 4 bits utilizando el **Full Adder** creado en `ex01`. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex02` (puedes checkear con `pwd`) y abre el archivo `adder_4b.dig` con **Digital**:
+> Build and simulate, in **Digital**, a 4-bit **Ripple-Carry Adder** using the **Full Adder** you created in `ex01`. From a terminal, make sure you are in the `workspace/digital-basic/ex02` path (you can check with `pwd`) and open the `adder_4b.dig` file with **Digital**:
 >
 >  ```bash
 >  $ Digital adder_4b.dig
 >  ```
 >
-> El archivo contiene las entradas, salidas, así como un **test** para verificar el funcionamiento. Completa el esquemático instanciando el módulo `fulladder` desde `Components/Custom`.
+> The file contains the inputs, the outputs, and a **test** to verify the circuit's behavior. Complete the schematic by instantiating the `fulladder` module from `Components/Custom`.
 >
 > ![adder_digital](../figs/adder_digital.png)
 >
 > 
 
 > [!IMPORTANT] 
-> Para poder instanciar un módulo desde un archivo `.dig`, el archivo debe estar en el mismo directorio de trabajo. Se recomienda crear una copia usando el explorador de archivos de `VSCode` o bien desde una terminal con el comando:
+> To instantiate a module from a `.dig` file, the file must be in the same working directory. We recommend making a copy using the `VSCode` file explorer, or from a terminal with the command:
 >
 > ```bash
 > $ cp ../ex01/fulladder.dig ./
 > ```
 >
 
-> Ejecuta el **test** para verificar el funcionamiento del circuito haciendo click en el botón the **Run (play)** con el tick verde.
+> Run the **test** to verify the circuit by clicking the **Run (play)** button with the green tick.
 >
-> Si el circuito fué implementado correctamente, la ventana emergente mostrará los valores de las salidas en verde. En caso contrario, algunos valores estarán en rojo.
+> If the circuit was implemented correctly, the pop-up window will show the output values in green. Otherwise, some values will be shown in red.
 >
 > ![ex02_test](../figs/ex02_test.png)
 
 >
 > [!CAUTION] 
-> Las entradas y salidas del esquemático deben tener los mismos nombres que las definidas en el **test**. Se recomienda no modificar los nombres o bien hacerlo en ambas partes para evitar errores por diferencias de nombre.
+> The inputs and outputs in the schematic must have the same names as those defined in the **test**. It's best not to rename them, or else rename them in both places to avoid errors caused by mismatched names.
 
 ---

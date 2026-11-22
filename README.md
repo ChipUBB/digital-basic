@@ -1,49 +1,53 @@
+🌐 **English** | [Español](README.es.md)
+
 # digital-basic
 
-Bienvenido al taller de Diseño Digital Básico. Este repositorio contiene todos los materiales, ejercicios y herramientas necesarias para aprender los fundamentos del diseño de circuitos integrados digitales, desde la creación de circuitos lógicos básicos hasta la implementación física de un chip.
+Welcome to the Basic Digital Design workshop. This repository contains all the materials, exercises and tools you need to learn the fundamentals of digital integrated circuit design, from building basic logic circuits to the physical implementation of a chip.
 
-## Objetivos del Taller
+## Workshop Goals
 
-Al completar este taller, serás capaz de:
+By completing this workshop, you will be able to:
 
-- Comprender los fundamentos del diseño digital y la lógica booleana
-- Diseñar y simular circuitos digitales usando el software de simulación **Digital**
-- Implementar un diseño desde RTL hasta GDS usando **LibreLane** y herramientas open-source
-- Trabajar con un PDK (Process Design Kit)
+- Understand the fundamentals of digital design and Boolean logic
+- Design and simulate digital circuits using the **Digital** simulation software
+- Take a design from RTL to GDS using **LibreLane** and open-source tools
+- Work with a PDK (Process Design Kit)
 
-## Comenzando
+## Getting Started
 
-### 1. Instalación del Entorno
+### 1. Environment Setup
 
-Sigue la [Guía de Instalación](INSTALL.md) para configurar tu entorno de trabajo. Esta guía te llevará paso a paso por:
+Follow the [Installation Guide](INSTALL.md) to set up your working environment. This guide walks you step by step through:
 
-- Instalación de Git y clonado del repositorio
-- Instalación de Docker
-- Configuración de VcXsrv (Windows)
-- Instalación de VS Code y la extensión Dev Containers
-- Apertura del proyecto en el DevContainer
+- Installing Git and cloning the repository
+- Installing Docker
+- Configuring VcXsrv (Windows)
+- Installing VS Code and the Dev Containers extension
+- Opening the project in the DevContainer
 
-### 2. Estructura del Repositorio
+### 2. Repository Structure
 ```
 digital-basic/
-├── figs/                   # Imágenes y diagramas
-├── ex01/                   # Ejercicio 1: Introducción a Digital
-├── ex02/                   # Ejercicio 2: Diseño de circuitos combinacionales
-├── ex03/                   # Ejercicio 3: Diseño de circuitos secuenciales
-├── ex04/                   # Ejercicio 4: Flujo RTL-to-GDS con LibreLane
-├── digital-basics.pdf      # Slides del taller
-├── INSTALL.md              # Guía de instalación completa
-└── README.md               # Este archivo
+├── figs/                   # Images and diagrams
+├── ex01/                   # Exercise 1: Introduction to Digital
+├── ex02/                   # Exercise 2: Combinational circuit design
+├── ex03/                   # Exercise 3: Sequential circuit design
+├── ex04/                   # Exercise 4: RTL-to-GDS flow with LibreLane
+├── digital_basics.pdf      # Workshop slides (Spanish)
+├── INSTALL.md              # Complete installation guide
+├── INSTALL.es.md           # Installation guide (Spanish)
+├── README.md               # This file
+└── README.es.md            # README (Spanish)
 ```
 
-## Herramientas Utilizadas
+## Tools Used
 
-Este taller utiliza herramientas de código abierto:
+This workshop uses open-source tools:
 
-- **[Digital](https://github.com/hneemann/Digital)**: Simulador de circuitos digitales
-- **[LibreLane](https://librelane.readthedocs.io/en/stable/getting_started/newcomers/index.html)**: Infraestructura para flujos RTL-to-GDS
-- **[IHP SG13G2 PDK](https://github.com/IHP-GmbH/IHP-Open-PDK)**: Process Design Kit open-source de 130nm
+- **[Digital](https://github.com/hneemann/Digital)**: Digital circuit simulator
+- **[LibreLane](https://librelane.readthedocs.io/en/stable/getting_started/newcomers/index.html)**: Infrastructure for RTL-to-GDS flows
+- **[IHP SG13G2 PDK](https://github.com/IHP-GmbH/IHP-Open-PDK)**: Open-source 130nm Process Design Kit
 
-## Agradecimientos
+## Acknowledgements
 
-- **Comunidad Open-Source** - Por las increíbles herramientas que hacen posible este taller
+- **Open-Source Community** - For the amazing tools that make this workshop possible
