@@ -1,42 +1,44 @@
+🌐 **English** | [Español](README.es.md)
+
 # ex03
 
-En este ejercicio, trabajarás en el diseño y simulación de un **Counter** (contador) de 4 bits, aprovechando la capacidad de diseño jerárquico de **Digital**. Las tareas son:
+In this exercise, you will design and simulate a 4-bit **Counter**, taking advantage of **Digital**'s hierarchical design capabilities. The tasks are:
 
-- Entender como realizar un diseño jerárquico en **Digital** que incluye componentes secuenciales (**flip-flop**)
-- Utilizar el **Adder** de `ex02` e instanciarlo en `counter_4b.dig` para construir un **Counter** de 4 bits
-- Verificar el funcionamiento del circuito a través del **test** en el archivo
+- Understand how to build a hierarchical design in **Digital** that includes sequential components (**flip-flops**)
+- Use the **Adder** from `ex02` and instantiate it in `counter_4b.dig` to build a 4-bit **Counter**
+- Verify the circuit's behavior with the **test** included in the file
 
 ## Counter
 
-Un **Counter** binario de $N$ bits es un circuito secuencial que recibe una señal de reloj $CLK$ y tiene una salida $Q$ de $N$ bits. Básicamente, en cada ciclo de reloj, la salida $Q$ aumenta en $1$. Por lo tanto, un **Counter** puede ser construido utilizando un **Adder** de $N$ bits y un **registro** de $N$ bits (o bien múltiples **flip-flop**), donde la salida del **registro** es realimentada a una de las entradas del **Adder** mientras la otra entrada recibe un $1$.
+An $N$-bit binary **Counter** is a sequential circuit that receives a clock signal $CLK$ and has an $N$-bit output $Q$. Basically, on every clock cycle the output $Q$ increases by $1$. A **Counter** can therefore be built from an $N$-bit **Adder** and an $N$-bit **register** (or several **flip-flops**), where the **register** output is fed back into one of the **Adder** inputs while the other input receives a $1$.
 
 ![counter](../figs/counter.png)
 
 ---
 > ### Task 1
 > 
-> Crea y simula en **Digital**, un **Counter** de 4 bits utilizando el **Adder** creado en `ex02`. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex03` (puedes checkear con `pwd`) y abre el archivo `counter_4b.dig` con **Digital**:
+> Build and simulate, in **Digital**, a 4-bit **Counter** using the **Adder** you created in `ex02`. From a terminal, make sure you are in the `workspace/digital-basic/ex03` path (you can check with `pwd`) and open the `counter_4b.dig` file with **Digital**:
 >
 >  ```bash
 >  $ Digital counter_4b.dig
 >  ```
 >
-> El archivo contiene las entradas, salidas, así como un **test** para verificar el funcionamiento. Completa el esquemático instanciando el módulo `adder_4b` desde `Components/Custom`.
+> The file contains the inputs, the outputs, and a **test** to verify the circuit's behavior. Complete the schematic by instantiating the `adder_4b` module from `Components/Custom`.
 >
 > ![counter_digital](../figs/counter_digital.png)
 
 > [!NOTE]
-> Para evitar desorden debido a excesivos cables (realimentación), se recomienda utilizar `Tunnel` (el componente con forma triangular) que se encuentra en `Components/wires`, estos permiten realizar conexiones sin necesidad de cables.
+> To avoid clutter from too many wires (feedback), we recommend using a `Tunnel` (the triangle-shaped component) found under `Components/wires`. Tunnels let you make connections without drawing wires.
 
-> Ejecuta el **test** para verificar el funcionamiento del circuito haciendo click en el botón the **Run (play)** con el tick verde.
+> Run the **test** to verify the circuit by clicking the **Run (play)** button with the green tick.
 >
-> Si el circuito fué implementado correctamente, la ventana emergente mostrará los valores de las salidas en verde. En caso contrario, algunos valores estarán en rojo.
+> If the circuit was implemented correctly, the pop-up window will show the output values in green. Otherwise, some values will be shown in red.
 >
 > ![ex03_test](../figs/ex03_test.png)
 
 >
 > [!CAUTION] 
-> Las entradas y salidas del esquemático deben tener los mismos nombres que las definidas en el **test**. Se recomienda no modificar los nombres o bien hacerlo en ambas partes para evitar errores por diferencias de nombre.
+> The inputs and outputs in the schematic must have the same names as those defined in the **test**. It's best not to rename them, or else rename them in both places to avoid errors caused by mismatched names.
 
 ---
 

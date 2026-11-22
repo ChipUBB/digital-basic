@@ -1,58 +1,60 @@
+🌐 **English** | [Español](README.es.md)
+
 # ex01
 
-En este ejercicio, trabajarás en el diseño y simulación de un **Full Adder** (sumador) para familiarizarte con el software de diseño lógico y simulación **Digital**. Las tareas son:
+In this exercise, you will design and simulate a **Full Adder** to get familiar with the logic design and simulation software **Digital**. The tasks are:
 
-- Obtener la función booleana desde la tabla de verdad que describe el funcionamiento del circuito
-- A partir de la función booleana, crear el esquemático en compuertas lógicas en el archivo `fulladder.dig` con **Digital**
-- Verificar el funcionamiento del circuito a través del **test** en el archivo
+- Derive the Boolean function from the truth table that describes how the circuit works
+- From the Boolean function, build the logic gate schematic in the `fulladder.dig` file using **Digital**
+- Verify the circuit's behavior with the **test** included in the file
 
 ## Full Adder
 
-Un **Full Adder** tiene 3 entradas, $A$, $B$ y $C_{in}$, y, 2 salidas, $S$ y $C_{out}$.
+A **Full Adder** has 3 inputs, $A$, $B$ and $C_{in}$, and 2 outputs, $S$ and $C_{out}$.
 
 ![fulladder](../figs/fulladder.png)
 
-Para obtener las ecuaciones booleanas que nos permiten implementar el circuito, se emplea suma de productos (SOP, *Sum-of-Products)*, es decir, se suman los minitérminos para los que la salida es **TRUE**:
+To obtain the Boolean equations that let us implement the circuit, we use sum of products (SOP), that is, we add up the minterms for which the output is **TRUE**:
 
 $S$:
 
-|True Table|Boolean Eq|
+|Truth Table|Boolean Equation|
 |:---|:---|
 |![fulladder_S](../figs/fulladder_S.png)|$S = \overline{A}\overline{B}C_{in} + \overline{A}B\overline{C_{in}} + A\overline{B}\overline{C_{in}} + ABC_{in}$ <br> $S = C_{in}(\overline{A}\overline{B} + AB) + \overline{C_{in}}(\overline{A}B +A\overline{B})$ <br> $S = C_{in}(\overline{A \oplus B}) + \overline{C_{in}}(A \oplus B)$ <br> $S = C_{in} \oplus A \oplus B$
 
 
 $C_{out}$:
 
-|True Table|Boolean Eq|
+|Truth Table|Boolean Equation|
 |:---|:---|
-|![fulladder_Cout](../figs/fulladder_Cout.png)|$C_{out} = \overline{A}BC_{in} + A\overline{B}C_{in} + AB\overline{C_{in}} + ABC_{in}$<br>Usando Idempotency (T3): $B + B = B$, se tiene: <br> $C_{out} = \overline{A}BC_{in} + A\overline{B}C_{in} + AB\overline{C_{in}} + ABC_{in} + ABC_{in} + ABC_{in}$ <br> $C_{out} = BC_{in}(\overline{A} + A) + AC_{in}(\overline{B} + B) + AB(\overline{C_{in}} + C_{in})$ <br> $C_{out} = BC_{in} + AC_{in} + AB$
+|![fulladder_Cout](../figs/fulladder_Cout.png)|$C_{out} = \overline{A}BC_{in} + A\overline{B}C_{in} + AB\overline{C_{in}} + ABC_{in}$<br>Using Idempotency (T3): $B + B = B$, we get: <br> $C_{out} = \overline{A}BC_{in} + A\overline{B}C_{in} + AB\overline{C_{in}} + ABC_{in} + ABC_{in} + ABC_{in}$ <br> $C_{out} = BC_{in}(\overline{A} + A) + AC_{in}(\overline{B} + B) + AB(\overline{C_{in}} + C_{in})$ <br> $C_{out} = BC_{in} + AC_{in} + AB$
 
-Circuito en compuertas lógicas (esquemático):
+Logic gate circuit (schematic):
 
 ![fulladder_gates](../figs/fulladder_gates.png)
 
 ---
 > ### Task 1
 > 
-> Crea y simula el circuito en **Digital**. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex01` (puedes checkear con `pwd`) y abre el archivo `fulladder.dig` con **Digital**:
+> Build and simulate the circuit in **Digital**. From a terminal, make sure you are in the `workspace/digital-basic/ex01` path (you can check with `pwd`) and open the `fulladder.dig` file with **Digital**:
 >
 >  ```bash
->  $ Digital fullader.dig
+>  $ Digital fulladder.dig
 >  ```
 >
-> El archivo contiene las entradas, salidas, así como un **test** para verificar el funcionamiento. Completa el esquemático utilizando compuertas lógicas, estas se encuentran en `Components/logic` en el menú superior de **Digital**.
+> The file contains the inputs, the outputs, and a **test** to verify the circuit's behavior. Complete the schematic using logic gates, which you can find under `Components/logic` in **Digital**'s top menu.
 >
-> ![fullader_digital](../figs/fulladder_digital.png)
+> ![fulladder_digital](../figs/fulladder_digital.png)
 >
-> Ejecuta el **test** para verificar el funcionamiento del circuito haciendo click en el botón the **Run (play)** con el tick verde.
+> Run the **test** to verify the circuit by clicking the **Run (play)** button with the green tick.
 >
-> Si el circuito fué implementado correctamente, la ventana emergente mostrará los valores de las salidas en verde. En caso contrario, algunos valores estarán en rojo.
+> If the circuit was implemented correctly, the pop-up window will show the output values in green. Otherwise, some values will be shown in red.
 >
 > ![ex01_test](../figs/ex01_test.png)
 
 >
 > [!CAUTION] 
-> Las entradas y salidas del esquemático deben tener los mismos nombres que las definidas en el **test**. Se recomienda no modificar los nombres o bien hacerlo en ambas partes para evitar errores por diferencias de nombre.
+> The inputs and outputs in the schematic must have the same names as those defined in the **test**. It's best not to rename them, or else rename them in both places to avoid errors caused by mismatched names.
 
 ---
 

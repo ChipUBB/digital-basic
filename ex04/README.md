@@ -1,74 +1,78 @@
+🌐 **English** | [Español](README.es.md)
+
 # ex04
 
-En este ejercicio, trabajarás en el flujo de diseño de circuitos integrados (IC, Integrated Circuit) digitales, aprovechando la capacidad de **Digital** para obtener una descripción en algún lenguaje de descripción de hardware (HDL, Hardware Description Language) desde el esquemático y **Librelane** para obtener el GDS. Las tareas son:
+In this exercise, you will work through the digital integrated circuit (IC) design flow, using **Digital** to obtain a description of the schematic in a hardware description language (HDL), and **LibreLane** to obtain the GDS. The tasks are:
 
-- Entender conceptos del flujo de diseño de circuitos integrados digitales
-- Exportar la descripción del **Counter** de `ex03` en **Verilog** usando **Digital**
-- Enteder en que consiste **Librelane**, cómo configurar la herramienta, y pasar por el flujo automático RTL-to-GDS el **Counter** de `ex03`
+- Understand the concepts behind the digital IC design flow
+- Export the **Counter** from `ex03` to **Verilog** using **Digital**
+- Understand what **LibreLane** is and how to configure it, and run the **Counter** from `ex03` through the automated RTL-to-GDS flow
 
-## Overview de Diseño de ICs
+## IC Design Overview
 
-Diseñar un chip es un tarea compleja que conlleva varias etapas (por eso se habla de flujo), así como expertis y atención a los detalles. Este proceso inicia con una idea de diseño (un circuito que resuelve algún problema) y finaliza al obtener todos los archivos necesarios para fabricar, los que posteriormente son enviados a una fábrica (foundry) donde el diseño es llevado al silicio. Algunas etapas del flujo de diseño son:
+Designing a chip is a complex task that involves several stages (which is why we talk about a *flow*), as well as expertise and attention to detail. The process starts with a design idea (a circuit that solves some problem) and ends with all the files needed for manufacturing, which are then sent to a fab (foundry) where the design is turned into silicon. Some stages of the design flow are:
 
-- **Design Entry**: En esta etapa, describimos cómo funcionará nuestro circuito usando un lenguaje llamado HDL (Lenguaje de Descripción de Hardware), como Verilog o VHDL. Es similar a escribir un programa, pero en lugar de crear software, estamos describiendo un circuito físico. Aquí definimos qué operaciones realizará el chip y cómo procesará la información.
-- **Verification**: Antes de continuar, necesitamos asegurarnos de que nuestro diseño funciona correctamente. En esta etapa, probamos el circuito mediante simulaciones para detectar errores. Es como probar un videojuego antes de lanzarlo: queremos encontrar y corregir los problemas antes de fabricar el chip real, porque una vez fabricado, ¡no se puede modificar!
-- **Synthesis**: Aquí es donde la magia comienza a suceder. La herramienta de síntesis toma nuestra descripción en HDL y la convierte en un circuito real hecho de compuertas lógicas (AND, OR, NOT, etc.). El resultado se llama **"Netlist"** y es básicamente una lista de todas las compuertas que necesitamos y cómo están conectadas entre sí.
-- **Layout/Physical Synthesis**: Esta es una de las etapas más complejas. Tomamos el circuito de compuertas lógicas y lo convertimos en un plano físico que muestra exactamente dónde irá cada componente en el chip y cómo se conectarán. Esta etapa incluye varios pasos:
+- **Design Entry**: In this stage, we describe how our circuit will work using an HDL (Hardware Description Language), such as Verilog or VHDL. It's similar to writing a program, but instead of creating software, we are describing a physical circuit. Here we define what operations the chip will perform and how it will process information.
+- **Verification**: Before moving on, we need to make sure our design works correctly. In this stage, we test the circuit through simulations to catch errors. It's like testing a video game before releasing it: we want to find and fix problems before manufacturing the real chip, because once it's made, it can't be changed!
+- **Synthesis**: This is where the magic starts. The synthesis tool takes our HDL description and turns it into a real circuit made of logic gates (AND, OR, NOT, etc.). The result is called a **"Netlist"**, which is basically a list of all the gates we need and how they are connected to each other.
+- **Layout/Physical Synthesis**: This is one of the most complex stages. We take the logic gate circuit and turn it into a physical plan that shows exactly where each component will go on the chip and how they will be connected. This stage includes several steps:
 
-  - **Floorplaning**: Decidir dónde colocar los diferentes bloques del circuito
-  - **Placement**: Ubicar cada compuerta en su posición específica
-  - **Routing**: Trazar todas las conexiones entre componentes (como trazar cables en un circuito)
+  - **Floorplanning**: Deciding where to place the different blocks of the circuit
+  - **Placement**: Placing each gate in its specific position
+  - **Routing**: Drawing all the connections between components (like laying out wires in a circuit)
 
-- **Signoff**: Esta es la etapa final donde hacemos una revisión exhaustiva de todo. Verificamos que el diseño funcione correctamente, que no consuma demasiada energía, y que cumpla con todos los requisitos. Solo después de esta aprobación final, el diseño está listo para enviarse a la fábrica donde se producirá el chip real.
+- **Signoff**: This is the final stage, where we do a thorough review of everything. We check that the design works correctly, that it doesn't consume too much power, and that it meets all requirements. Only after this final approval is the design ready to be sent to the fab where the real chip will be produced.
 
 ![asic_flow-diagram](../figs/asic-flow-diagram.webp)
 
-### ¿Qué es un **PDK**?
+### What is a **PDK**?
 
-Un **PDK** (Process Design Kit) es un conjunto de archivos que describe las capacidades de fabricación de una fábrica de semiconductores. Cada **foundry** (fábrica) cuenta con maquinaria especializada que le permite fabricar chips con características específicas, como el tamaño mínimo de los componentes y sus propiedades eléctricas. A este conjunto de capacidades y limitaciones se le denomina **proceso tecnológico**.
+A **PDK** (Process Design Kit) is a set of files that describes the manufacturing capabilities of a semiconductor fab. Each **foundry** has specialized machinery that lets it manufacture chips with specific characteristics, such as the minimum size of components and their electrical properties. This set of capabilities and limitations is called a **technology process**.
 
-Para diseñar un chip que pueda ser fabricado, necesitamos un **PDK** que nos proporcione todos los detalles técnicos y las reglas de diseño del proceso tecnológico específico que vamos a utilizar. El **PDK** actúa como un puente entre nuestro diseño y las posibilidades reales de fabricación.
-En este ejercicio trabajaremos con el **PDK** de código abierto (opensource) de IHP, que corresponde a un proceso tecnológico de 130 nanómetros (nm) `ihp-sg13g2`.
+To design a chip that can actually be manufactured, we need a **PDK** that gives us all the technical details and design rules of the specific technology process we are going to use. The **PDK** acts as a bridge between our design and what can really be manufactured.
+In this exercise we will work with IHP's open-source **PDK**, which corresponds to a 130 nanometer (nm) technology process, `ihp-sg13g2`.
 
-## Librelane
+## LibreLane
 
-LibreLane es una herramienta de código abierto que facilita el diseño de chips digitales. Funciona como un "asistente automatizado" que organiza y coordina las diferentes etapas del proceso de diseño de circuitos integrados, permitiendo a los diseñadores crear chips sin necesidad de configurar manualmente cada herramienta.
-Características principales:
+LibreLane is an open-source tool that makes digital chip design easier. It works as an "automated assistant" that organizes and coordinates the different stages of the integrated circuit design process, letting designers create chips without having to configure each tool manually.
+Main features:
 
-  - **Fácil de usar**: LibreLane permite configurar todo el flujo de diseño mediante un único archivo de configuración, en lugar de tener que aprender a usar múltiples herramientas por separado.
-  - **Basado en herramientas de código abierto**: Utiliza herramientas gratuitas y de acceso libre, lo que lo hace ideal para aprender y experimentar sin costos de licencias.
-  - **Flexible**: Se puede personalizar según las necesidades específicas de cada proyecto, ya sea modificando el archivo de configuración o escribiendo scripts en **Python**.
-  - **Comunidad activa**: Al ser un proyecto de código abierto, cuenta con una comunidad de usuarios que comparten conocimientos, recursos y soluciones a problemas comunes.
+  - **Easy to use**: LibreLane lets you configure the whole design flow through a single configuration file, instead of having to learn how to use multiple tools separately.
+  - **Built on open-source tools**: It uses free and openly available tools, which makes it ideal for learning and experimenting without license costs.
+  - **Flexible**: It can be customized to the specific needs of each project, either by editing the configuration file or by writing **Python** scripts.
+  - **Active community**: As an open-source project, it has a community of users who share knowledge, resources, and solutions to common problems.
 
 ---
 > ### Task 1
 > 
-> Exporta la descripción en HDL del **Counter** de 4 bits diseñado en `ex03` usando **Digital**. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex03` (puedes checkear con `pwd`) y abre el archivo `counter_4b.dig` con **Digital**:
+> Export the HDL description of the 4-bit **Counter** you designed in `ex03` using **Digital**. From a terminal, make sure you are in the `workspace/digital-basic/ex03` path (you can check with `pwd`) and open the `counter_4b.dig` file with **Digital**:
 >
 >  ```bash
 >  $ Digital counter_4b.dig
 >  ```
 >
-> - ¿Cuál es el nombre del módulo top? (Este nombre lo necesitarás en la siguiente tarea)
+> To export the circuit to Verilog, go to `File > Export > Export to Verilog` in **Digital**'s top menu and save the file as `counter_4b.v` in the same directory (`ex03`). Open the generated file in VS Code to inspect it.
 >
-> Copia el archivo Verilog generado al directorio `src` de `ex04`:
+> - What is the name of the top module? (You will need this name in the next task)
+>
+> Copy the generated Verilog file to the `src` directory of `ex04`:
 >
 >  ```bash
 >  $ cp counter_4b.v ../ex04/src/
 >  ```
 > ### Task 2
 > 
-> Pasa por el flujo default de **Librelane** el **Counter** de 4 bits utilizando el **PDK** de IHP. Desde una terminal asegúrate de que estás en la ruta `workspace/digital-basic/ex04` (puedes checkear con `pwd`). En este directorio hay un archivo `config.yaml` el cuál permite configurar **Librelane** y un directorio `src` (`ls` para listar el contenido del directorio).
+> Run the 4-bit **Counter** through the default **LibreLane** flow using the IHP **PDK**. From a terminal, make sure you are in the `workspace/digital-basic/ex04` path (you can check with `pwd`). This directory contains a `config.yaml` file, which is used to configure **LibreLane**, and a `src` directory (use `ls` to list the directory contents).
 >
-> En primer lugar, verifica que la descripción en HDL exportada previamente se encuentre en `ex04/src`:
+> First, check that the HDL description you exported earlier is in `ex04/src`:
 >
 >  ```bash
 >  $ ls src/
 >  ```
 > 
-> Deberías ver el archivo `counter_4b.v` listado.
+> You should see the `counter_4b.v` file listed.
 >
-> El archivo `config.yaml` tiene el siguiente contenido:
+> The `config.yaml` file has the following content:
 >
 >  ```yaml
 >  DESIGN_NAME: <top module name>
@@ -81,50 +85,50 @@ Características principales:
 >  CORE_AREA: [2, 2, 48, 48]
 >  ```
 >
-> - **DESIGN_NAME**: Nombre del módulo principal de tu diseño en Verilog. Es el módulo de nivel superior que contiene todo el circuito.
-> - **VERILOG_FILES**: Ruta o directorio donde se encuentran los archivos fuente de Verilog que describen tu circuito.
-> - **CLOCK_PERIOD**: Período de reloj en nanosegundos (ns). En este caso, 25 ns equivale a una frecuencia de 40 MHz. Este valor determina qué tan rápido funcionará el chip.
-> - **CLOCK_PORT**: Nombre de la señal de reloj en tu diseño Verilog. Normalmente se llama clk.
-> - **FP_SIZING**: Método de dimensionamiento del chip. absolute significa que especificaremos manualmente el tamaño exacto del chip usando coordenadas.
-> - **DIE_AREA**: Área total del chip en micrómetros (μm), definida por las coordenadas [x_inicial, y_inicial, x_final, y_final]. En este caso: un cuadrado de 50 μm × 50 μm.
-> - **CORE_AREA**: Área útil donde se colocarán los componentes del circuito, también en micrómetros. Aquí: un área de 46 μm × 46 μm (dejando 2 μm de margen en cada lado para conexiones y alimentación).
+> - **DESIGN_NAME**: Name of the main module of your Verilog design. It is the top-level module that contains the whole circuit.
+> - **VERILOG_FILES**: Path or directory where the Verilog source files describing your circuit are located.
+> - **CLOCK_PERIOD**: Clock period in nanoseconds (ns). In this case, 25 ns corresponds to a frequency of 40 MHz. This value determines how fast the chip will run.
+> - **CLOCK_PORT**: Name of the clock signal in your Verilog design. It is usually called clk.
+> - **FP_SIZING**: Chip sizing method. absolute means we will manually specify the exact chip size using coordinates.
+> - **DIE_AREA**: Total chip area in micrometers (μm), defined by the coordinates [x_start, y_start, x_end, y_end]. In this case: a 50 μm × 50 μm square.
+> - **CORE_AREA**: Usable area where the circuit components will be placed, also in micrometers. Here: a 46 μm × 46 μm area (leaving a 2 μm margin on each side for connections and power).
 >
-> Para configurar **Librelane** completa `config.yaml` con la información faltante, en este caso, **DESIGN_NAME** y **VERILOG_FILES**.
+> To configure **LibreLane**, complete `config.yaml` with the missing information, in this case **DESIGN_NAME** and **VERILOG_FILES**.
 >
->Para utilizar **Librelane** invoca `nix-shell`, que hará que todos los paquetes incluidos con LibreLane estén disponibles para tu shell (este paso podría tardar ya que serán descargados algunos paquetes):
+>To use **LibreLane**, invoke `nix-shell`, which makes all the packages included with LibreLane available in your shell (this step may take a while, since some packages will be downloaded):
 >
 > ```
 > $ nix-shell /opt/librelane/shell.nix
 > ```
 >
-> Por defecto **Librelane** utiliza el **PDK** `sky130`. Sin embargo, el entorno de trabajo contiene 2 variables de entorno que indican a **Librelane** utilizar el **PDK** opensource de IHP `ihp-sg13g2`: `PDK` y `PDK_ROOT`, puedes verificar su contenido con:
+> By default, **LibreLane** uses the `sky130` **PDK**. However, the working environment has 2 environment variables that tell **LibreLane** to use IHP's open-source **PDK** `ihp-sg13g2`: `PDK` and `PDK_ROOT`. You can check their contents with:
 >
 > ```bash
 > $ echo $PDK
 > ```
-> y
+> and
 > ```bash
 > $ echo $PDK_ROOT
 > ```
 >
->  Para lanzar **Librelane** corre el siguiente comando:
+>  To launch **LibreLane**, run the following command:
 >
 > ```bash
 > $ librelane config.yaml
 > ```
 >
-> Si todo va bien, el final de tu output debería lucir así:
+> If everything goes well, the end of your output should look like this:
 >
 > ![librelane-log](../figs/librelane-log.png)
 >
-> Finalmente, usa el siguiente comando para visualizar el layout físico de tu circuito:
+> Finally, use the following command to view the physical layout of your circuit:
 >
 > ```bash
 > $ librelane --last-run --flow openinopenroad config.yaml
 > ```
 >
-> Esto abrirá una interfaz gráfica donde podrás explorar cómo quedaron distribuidos los componentes de tu contador en el chip.
+> This will open a graphical interface where you can explore how the components of your counter were laid out on the chip.
 >
-> ### Felicitaciones ya puedes ver tu chip!!
+> ### Congratulations, you can now see your chip!
 >
 ---

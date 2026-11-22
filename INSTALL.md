@@ -1,170 +1,172 @@
-# Instalación del entorno de trabajo
+🌐 **English** | [Español](INSTALL.es.md)
 
-Las herramientas para diseño de circuitos integrados, en general, son creadas originalmente para sistemas operativos basados en UNIX (como Linux), por lo tanto, el entorno de trabajo para este taller utiliza la distribución de Linux Ubuntu 22.04. Si es tu primera vez usando Linux, ¡no te preocupes! Solo haremos algunas cosas básicas como copiar archivos usando `cp` o movernos hacia rutas específicas con `cd`. Además, puedes consultar el al final de [Linux Cheatsheet](./digital_basics.pdf) para revisar comandos básicos.
+# Setting Up the Working Environment
+
+Integrated circuit design tools are, in general, originally built for UNIX-based operating systems (such as Linux). For this reason, the working environment for this workshop uses the Ubuntu 22.04 Linux distribution. If this is your first time using Linux, don't worry! We will only do a few basic things, like copying files with `cp` or moving to specific paths with `cd`. You can also check the [Linux Cheatsheet](./digital_basics.pdf) at the end of the workshop slides to review basic commands.
 
 ## Git/GitHub
 
-Como puedes ver, actualmente te encuentras en un repositorio de GitHub, pero ¿qué son exactamente Git y GitHub?
+As you can see, you are currently in a GitHub repository, but what exactly are Git and GitHub?
 
-### ¿Qué es Git?
+### What is Git?
 
-**Git** es un sistema de control de versiones gratuito que permite hacer seguimiento de los cambios en tus archivos. Imagina que estás escribiendo código y añades una nueva funcionalidad que lamentablemente produce errores, de tal modo que el programa ya no funciona. Sin Git, para volver a la versión que sí funcionaba, tendrías que acordarte de todos los cambios que realizaste y eliminarlos uno por uno. 
+**Git** is a free version control system that lets you keep track of changes to your files. Imagine you are writing code and add a new feature that unfortunately introduces errors, so the program no longer works. Without Git, to go back to the version that worked, you would have to remember every change you made and undo them one by one.
 
-Con Git, puedes tomar una "fotografía" de tu código antes de hacer las modificaciones, de tal modo que siempre puedes volver a ese punto. En Git, esa fotografía se llama **commit**. Es como tener un botón de "deshacer" súper poderoso que te permite volver a cualquier punto anterior de tu proyecto.
+With Git, you can take a "snapshot" of your code before making changes, so you can always return to that point. In Git, that snapshot is called a **commit**. It's like having a super-powered "undo" button that lets you go back to any earlier point in your project.
 
-### ¿Qué es GitHub?
+### What is GitHub?
 
-**GitHub** es una plataforma en la nube que funciona como un "hogar" para tus proyectos que usan Git. Piensa en GitHub como un Google Drive especializado para proyectos de código. La ventaja es que múltiples personas pueden trabajar en el mismo proyecto sin pisarse los pies: cada uno hace sus cambios por separado y luego Git ayuda a combinar todo, resolviendo conflictos cuando dos personas modifican la misma línea de código de formas diferentes.
+**GitHub** is a cloud platform that works as a "home" for your projects that use Git. Think of GitHub as a Google Drive specialized for code projects. The advantage is that many people can work on the same project without stepping on each other's toes: everyone makes their changes separately and then Git helps combine everything, resolving conflicts when two people change the same line of code in different ways.
 
-### Instalación de Git
+### Installing Git
 
-Actualmente, te encuentras en un repositorio de GitHub donde están almacenados todos los archivos necesarios para realizar el taller. Para poder trabajar con estos archivos en tu computadora, necesitas **clonar** el repositorio (hacer una copia local). Pero primero, debes instalar Git.
+You are currently in a GitHub repository where all the files needed for the workshop are stored. To work with these files on your computer, you need to **clone** the repository (make a local copy). But first, you need to install Git.
 
-1. **Instalar Git**: Ve a [Git Install](https://git-scm.com/install/windows) y sigue las instrucciones según tu sistema operativo (Windows, macOS, o Linux).
+1. **Install Git**: Go to [Git Install](https://git-scm.com/install/windows) and follow the instructions for your operating system (Windows, macOS, or Linux).
 
-2. **Verificar la instalación**: Abre una terminal (PowerShell en Windows, Terminal en macOS, o Bash en Linux) y ejecuta:
+2. **Verify the installation**: Open a terminal (PowerShell on Windows, Terminal on macOS, or Bash on Linux) and run:
 ```bash
 $ git --version
 ```
-Deberías ver algo como `git version 2.x.x`, lo que confirma que Git está instalado correctamente.
+You should see something like `git version 2.x.x`, which confirms that Git is installed correctly.
 
-3. **Clonar el repositorio**: Una vez Git esté instalado, clona el repositorio con el comando:
+3. **Clone the repository**: Once Git is installed, clone the repository with the command:
 ```bash
 $ git clone https://github.com/ChipUBB/digital-basic.git
 ```
 
-4. **Navegar al repositorio**: Muévete hacia el directorio del repositorio con el comando:
+4. **Go into the repository**: Move into the repository directory with the command:
 ```bash
 $ cd ./digital-basic
 ```
 
-## Docker y DevContainers
+## Docker and DevContainers
 
-Ahora que tienes los archivos del taller en tu computadora, necesitamos configurar el entorno de trabajo. Aquí es donde entran Docker y DevContainers.
+Now that you have the workshop files on your computer, we need to set up the working environment. This is where Docker and DevContainers come in.
 
-### ¿Qué es Docker?
+### What is Docker?
 
-**Docker** es una herramienta que permite crear "contenedores", imagínalos como cajas portátiles que incluyen todo lo necesario para ejecutar una aplicación: el sistema operativo, las herramientas, las bibliotecas, y las configuraciones. Es como tener una mini-computadora dentro de tu computadora, pero mucho más ligera y eficiente.
+**Docker** is a tool for creating "containers". Picture them as portable boxes that include everything needed to run an application: the operating system, the tools, the libraries, and the configuration. It's like having a mini-computer inside your computer, but much lighter and more efficient.
 
-**¿Por qué es útil?** Sin Docker, cada persona tendría que instalar manualmente decenas de herramientas y configurarlas correctamente, lo cual es complicado y propenso a errores. Con Docker, todos trabajan en el mismo entorno exacto, sin importar si usas Windows, macOS, o Linux. Si funciona en tu computadora, funcionará en todas las demás.
+**Why is it useful?** Without Docker, each person would have to manually install and correctly configure dozens of tools, which is complicated and error-prone. With Docker, everyone works in exactly the same environment, whether you use Windows, macOS, or Linux. If it works on your computer, it will work on everyone else's.
 
-### ¿Qué es un DevContainer?
+### What is a DevContainer?
 
-Un **DevContainer** (Development Container) es una configuración especial de Docker diseñada específicamente para desarrollo de software. A diferencia de un contenedor normal de Docker (que típicamente ejecuta una aplicación en modo servidor o batch sin interacción directa), un **DevContainer** está pensado para que trabajes dentro de él como si fuera tu entorno de desarrollo local.
+A **DevContainer** (Development Container) is a special Docker configuration designed specifically for software development. Unlike a regular Docker container (which typically runs an application in server or batch mode with no direct interaction), a **DevContainer** is meant for you to work inside it as if it were your local development environment.
 
-La diferencia clave es que con un DevContainer puedes usar **Visual Studio Code** (VS Code) de forma completamente integrada: abres VS Code en tu sistema operativo normal (Windows o Linux), pero todo el código se ejecuta, compila y prueba dentro del contenedor Linux. VS Code se conecta al contenedor de manera transparente, permitiéndote editar archivos, usar la terminal, instalar extensiones, y depurar código como si todo estuviera en tu máquina local, pero aprovechando todas las ventajas del contenedor (herramientas preinstaladas, mismo entorno para todos, aislamiento, etc.).
+The key difference is that with a DevContainer you can use **Visual Studio Code** (VS Code) in a fully integrated way: you open VS Code on your normal operating system (Windows or Linux), but all the code runs, compiles and is tested inside the Linux container. VS Code connects to the container transparently, letting you edit files, use the terminal, install extensions, and debug code as if everything were on your local machine, while taking advantage of everything the container offers (preinstalled tools, the same environment for everyone, isolation, etc.).
 
-En este taller, el DevContainer ya viene con todo instalado y listo para usar: Digital, LibreLane, el PDK de IHP. Esto significa **cero configuración manual** de tu parte, simplemente abres el proyecto en VS Code, y automáticamente tendrás acceso a todas estas herramientas sin "ensuciar" tu sistema operativo con instalaciones complejas. Además, si mueves tu proyecto a otra computadora, todo seguirá funcionando exactamente igual porque el entorno completo viaja con el proyecto.
+In this workshop, the DevContainer comes with everything installed and ready to use: Digital, LibreLane, and the IHP PDK. This means **zero manual setup** on your side: just open the project in VS Code and you automatically get access to all these tools without "cluttering" your operating system with complex installations. And if you move your project to another computer, everything will keep working exactly the same, because the whole environment travels with the project.
 
-### Instalación y Configuración
+### Installation and Setup
 
-#### Paso 1: Instalar Docker
+#### Step 1: Install Docker
 
-La instalación de Docker varía según tu sistema operativo:
+Docker installation depends on your operating system:
 
-**Para Windows:**
+**On Windows:**
 
-1. Ve a [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) y descarga Docker Desktop para Windows.
-2. Instala Docker Desktop siguiendo el asistente de instalación.
-3. Una vez instalado, abre Docker Desktop y espera a que inicie completamente (verás un ícono de Docker en tu barra de tareas).
-4. Verifica la instalación abriendo PowerShell y ejecutando:
+1. Go to [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) and download Docker Desktop for Windows.
+2. Install Docker Desktop by following the installation wizard.
+3. Once installed, open Docker Desktop and wait for it to fully start (you'll see a Docker icon in your taskbar).
+4. Verify the installation by opening PowerShell and running:
 ```bash
 $ docker --version
 ```
-   Deberías ver algo como `Docker version 24.x.x`.
+   You should see something like `Docker version 24.x.x`.
 
-**Para Linux:**
+**On Linux:**
 
-1. Sigue las instrucciones oficiales de Docker para tu distribución en [Docker Engine Install](https://docs.docker.com/engine/install/).
-2. Para Ubuntu/Debian, los comandos básicos son:
+1. Follow Docker's official instructions for your distribution at [Docker Engine Install](https://docs.docker.com/engine/install/).
+2. For Ubuntu/Debian, the basic commands are:
 ```bash
 $ sudo apt-get update
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
-3. Agrega tu usuario al grupo docker para no necesitar `sudo`:
+3. Add your user to the docker group so you don't need `sudo`:
 ```bash
 $ sudo usermod -aG docker $USER
 ```
-   Luego cierra sesión e inicia sesión nuevamente para que los cambios surtan efecto.
+   Then log out and log back in for the changes to take effect.
 
-4. Verifica la instalación ejecutando:
+4. Verify the installation by running:
 ```bash
 $ docker --version
 ```
-   Deberías ver algo como `Docker version 24.x.x`.
+   You should see something like `Docker version 24.x.x`.
 
-#### Paso 2: Instalar VcXsrv (Solo para Windows)
+#### Step 2: Install VcXsrv (Windows only)
 
-Las herramientas de diseño de circuitos integrados que usaremos (como Digital y herramientas de LibreLane) tienen interfaces gráficas que necesitan un servidor X11 para funcionar en Windows. **VcXsrv** proporciona este servidor, permitiendo que las aplicaciones gráficas de Linux dentro del contenedor se visualicen en tu escritorio de Windows.
+The integrated circuit design tools we will use (such as Digital and the LibreLane tools) have graphical interfaces that need an X11 server to work on Windows. **VcXsrv** provides this server, allowing the Linux graphical applications inside the container to be displayed on your Windows desktop.
 
-**Instalación de VcXsrv:**
+**Installing VcXsrv:**
 
-1. Ve a [VcXsrv en SourceForge](https://sourceforge.net/projects/vcxsrv/) y descarga el instalador.
-2. Instala VcXsrv siguiendo el asistente de instalación con las opciones por defecto.
-3. Una vez instalado, inicia **XLaunch** desde el menú de inicio.
-4. Configura XLaunch con las siguientes opciones:
-   - **Display settings**: Selecciona "Multiple windows" y deja el display number en -1, luego haz clic en "Next"
-   - **Client startup**: Selecciona "Start no client", luego haz clic en "Next"
-   - **Extra settings**: Marca la casilla "Disable access control", luego haz clic en "Next"
-   - Haz clic en "Finish"
+1. Go to [VcXsrv on SourceForge](https://sourceforge.net/projects/vcxsrv/) and download the installer.
+2. Install VcXsrv by following the installation wizard with the default options.
+3. Once installed, start **XLaunch** from the Start menu.
+4. Configure XLaunch with the following options:
+   - **Display settings**: Select "Multiple windows" and leave the display number at -1, then click "Next"
+   - **Client startup**: Select "Start no client", then click "Next"
+   - **Extra settings**: Check the "Disable access control" box, then click "Next"
+   - Click "Finish"
 
-5. **Importante**: VcXsrv debe estar ejecutándose cada vez que quieras usar las herramientas gráficas. Verás un ícono de XLaunch en tu barra de tareas cuando esté activo.
+5. **Important**: VcXsrv must be running every time you want to use the graphical tools. You'll see an XLaunch icon in your taskbar when it is active.
 
-**Nota para usuarios de Linux:** No necesitas instalar VcXsrv ya que Linux tiene soporte nativo para X11.
+**Note for Linux users:** You don't need to install VcXsrv, since Linux has native X11 support.
 
-#### Paso 3: Instalar Visual Studio Code (VS Code)
+#### Step 3: Install Visual Studio Code (VS Code)
 
-**VS Code** es un editor de código moderno y gratuito que se integra perfectamente con DevContainers.
+**VS Code** is a modern, free code editor that integrates seamlessly with DevContainers.
 
-1. Ve a [Visual Studio Code](https://code.visualstudio.com/Download) y descarga el instalador para tu sistema operativo.
-2. Instala VS Code siguiendo las instrucciones.
+1. Go to [Visual Studio Code](https://code.visualstudio.com/Download) and download the installer for your operating system.
+2. Install VS Code by following the instructions.
 
-#### Paso 4: Instalar la extensión Dev Containers
+#### Step 4: Install the Dev Containers extension
 
-1. Abre VS Code.
-2. Ve a la sección de extensiones (ícono de cuadrados en la barra lateral izquierda, o presiona `Ctrl+Shift+X`).
-3. Busca "**Dev Containers**" (o "Remote - Containers").
-4. Haz clic en "Install" en la extensión publicada por Microsoft.
+1. Open VS Code.
+2. Go to the Extensions view (the squares icon in the left sidebar, or press `Ctrl+Shift+X`).
+3. Search for "**Dev Containers**" (or "Remote - Containers").
+4. Click "Install" on the extension published by Microsoft.
 
 ![dev-containers-extension](figs/dev-containers-extension.png)
 
-#### Paso 5: Abrir el proyecto en el DevContainer
+#### Step 5: Open the project in the DevContainer
 
-1. **(Solo Windows)** Asegúrate de que VcXsrv esté ejecutándose antes de continuar (debe aparecer el ícono en la barra de tareas).
+1. **(Windows only)** Make sure VcXsrv is running before continuing (its icon should appear in the taskbar).
 
-2. En VS Code, abre la carpeta del repositorio clonado:
-   - Ve a `File > Open Folder...`
-   - Navega hasta la carpeta `digital-basic` y ábrela
+2. In VS Code, open the cloned repository folder:
+   - Go to `File > Open Folder...`
+   - Navigate to the `digital-basic` folder and open it
 
-3. VS Code detectará automáticamente que hay una configuración de DevContainer en el proyecto. Verás una notificación en la esquina inferior derecha que dice: "Folder contains a Dev Container configuration file. Reopen folder to develop in a container".
+3. VS Code will automatically detect that the project contains a DevContainer configuration. You'll see a notification in the bottom-right corner saying: "Folder contains a Dev Container configuration file. Reopen folder to develop in a container".
 
-4. Haz clic en "**Reopen in Container**" (o abre la paleta de comandos con `Ctrl+Shift+P` y busca "Dev Containers: Reopen in Container").
+4. Click "**Reopen in Container**" (or open the command palette with `Ctrl+Shift+P` and search for "Dev Containers: Reopen in Container").
 
-5. **Primera vez**: Docker descargará e instalará todas las herramientas necesarias. Este proceso puede tardar entre 10-20 minutos dependiendo de tu conexión a internet. ¡Ten paciencia! Solo sucede la primera vez.
+5. **First time**: Docker will download and install all the required tools. This can take 10-20 minutes depending on your internet connection. Be patient! It only happens the first time.
 
-6. Una vez completado, verás en la esquina inferior izquierda de VS Code un indicador que dice "**Dev Container: [nombre]**", confirmando que estás trabajando dentro del contenedor.
+6. Once it's done, you'll see an indicator in the bottom-left corner of VS Code saying "**Dev Container: [name]**", confirming that you are working inside the container.
 
-#### Paso 6: Verificar el entorno
+#### Step 6: Verify the environment
 
-Abre una terminal dentro de VS Code (`` Ctrl+` `` o `Terminal > New Terminal`) y verifica que las herramientas estén disponibles:
+Open a terminal inside VS Code (`` Ctrl+` `` or `Terminal > New Terminal`) and check that the tools are available:
 ```bash
 $ Digital
 $ echo $PDK
 ```
 
-Si ves Digital y la variable `PDK` configurada, ¡estás listo para comenzar el taller!
+If you see Digital open and the `PDK` variable is set, you're ready to start the workshop!
 
-Corre el smoke test para asegurar que todo está bien con Librelane
+Run the smoke test to make sure everything is fine with LibreLane:
 ```bash
 $ librelane --log-level ERROR --condensed --show-progress-bar --smoke-test
 ```
 
-Puede que obtengas unos warnings, no te preocupes, si el flujo llega a la etapa 79 y hay algunas casillas en verde, todo está bien (LVS passed, DRC passed, Antenna passed).
+You may get some warnings. Don't worry: if the flow reaches stage 79 and some checks are green (LVS passed, DRC passed, Antenna passed), everything is fine.
 
-### Solución de problemas comunes
+### Troubleshooting
 
-- **Docker Desktop no inicia (Windows)**: Asegúrate de que la virtualización esté habilitada en tu BIOS/UEFI.
-- **El contenedor tarda mucho en construirse**: Es normal la primera vez. Las siguientes veces será instantáneo.
-- **Error de permisos en Linux**: Asegúrate de haber agregado tu usuario al grupo `docker` y haber cerrado e iniciado sesión nuevamente.
-- **Las ventanas gráficas no aparecen (Windows)**: Verifica que VcXsrv esté ejecutándose (ícono en la barra de tareas) y que hayas marcado "Disable access control" en la configuración.
-- **Error de conexión X11 (Windows)**: Reinicia VcXsrv y asegúrate de seguir los pasos de configuración correctamente.
+- **Docker Desktop won't start (Windows)**: Make sure virtualization is enabled in your BIOS/UEFI.
+- **The container takes a long time to build**: This is normal the first time. After that it will be instant.
+- **Permission errors on Linux**: Make sure you added your user to the `docker` group and logged out and back in.
+- **Graphical windows don't appear (Windows)**: Check that VcXsrv is running (icon in the taskbar) and that you checked "Disable access control" in its configuration.
+- **X11 connection error (Windows)**: Restart VcXsrv and make sure you followed the configuration steps correctly.
