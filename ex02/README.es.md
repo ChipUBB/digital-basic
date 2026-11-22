@@ -1,4 +1,4 @@
-🌐 [English](README.md) | **Español**
+[![English](../figs/lang/en-inactive.svg)](README.md) [![Spanish](../figs/lang/es-active.svg)](README.es.md)
 
 # ex02
 

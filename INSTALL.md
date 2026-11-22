@@ -1,4 +1,4 @@
-🌐 **English** | [Español](INSTALL.es.md)
+[![English](figs/lang/en-active.svg)](INSTALL.md) [![Spanish](figs/lang/es-inactive.svg)](INSTALL.es.md)
 
 # Setting Up the Working Environment
 

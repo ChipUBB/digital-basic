@@ -1,4 +1,4 @@
-🌐 [English](INSTALL.md) | **Español**
+[![English](figs/lang/en-inactive.svg)](INSTALL.md) [![Spanish](figs/lang/es-active.svg)](INSTALL.es.md)
 
 # Instalación del entorno de trabajo
 
